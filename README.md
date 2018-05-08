@@ -8,7 +8,8 @@ Some graphs to document the signal-flow of Luppp
 - orange Box = Jack Input Port
 - Blue Box = Internal Connection
 - Oval = Continous Controller
-- Triangle = Crossfade (When one path gets louder, the other gets quiter)
+- dashed line = connection can be disabled
+- dotted line = controller has inverse effect on another connection
 
 # Build
 
@@ -20,7 +21,6 @@ For more options, see `dot --help`
 # Known Problems
 
 - long way to go to be complete
-- no discrete controllers
 
 # Contribute
 
