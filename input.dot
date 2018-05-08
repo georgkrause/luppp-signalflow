@@ -10,13 +10,18 @@ strict digraph input {
 
     clip_record [label="Clip Record", shape=box, style=filled, color=blue];
 
-    sidechain_signal_volume [label="Sidechain Vol", shape=invtriangle]
+    sidechain_signal_volume [label="Sidechain Vol", shape=ellipse]
+
+    connect[ shape = point, width = 0 ];
 
     master_in -> "Input Volume";
-    "Input Volume" -> "Mix Volume";
-    "Mix Volume" -> "Send Volume" -> send_out;
-    "Input Volume" -> sidechain_key_out;
+    "Input Volume" -> "Mix Volume" [style=dashed];
+    "Mix Volume" -> "Send Volume" [style=dashed];
+    "Send Volume" -> send_out;
+    "Input Volume" -> sidechain_key_out [style=dashed];
     "Input Volume" -> sidechain_signal_volume -> sidechain_signal_out;
-    sidechain_signal_volume -> master_out;
+    "Mix Volume" -> connect[ arrowhead = none ];
     master_in -> clip_record;
+    sidechain_signal_volume -> connect[style=dotted, arrowhead=none];
+    connect -> master_out;
 }
