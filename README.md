@@ -8,6 +8,7 @@ Some graphs to document the signal-flow of Luppp
 - orange Box = Jack Input Port
 - Blue Box = Internal Connection
 - Oval = Continous Controller
+- Triangle = Crossfade (When one path gets louder, the other gets quiter)
 
 # Build
 
@@ -20,7 +21,6 @@ For more options, see `dot --help`
 
 - long way to go to be complete
 - no discrete controllers
-- no crossfaders
 
 # Contribute
 
