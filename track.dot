@@ -1,0 +1,32 @@
+strict digraph track {
+    clip [label="Clip", shape=box, style=filled, color=blue];
+    dbmeter [label="Meter", shape=box, style=filled, color=blue];
+    
+    return_track_in [label="Return Track In", shape=box, style=filled, color=orange];
+    
+    send_track_out [label="Send Track Out", shape=box, style=filled, color=red];
+    send_out [label="Send Out", shape=box, style=filled, color=red];
+    track_out [label="Track Out", shape=box, style=filled, color=red];
+    sidechain_signal_out [label="Sidechain Signal Out", shape=box, style=filled, color=red];
+    sidechain_key_out [label="Sidechain Key Out", shape=box, style=filled, color=red];
+    master_out [label="Master Out", shape=box, style=filled, color=red];
+    
+    connect_master[ shape = point, width = 0 ];
+    connect_track_out[ shape = point, width = 0 ];
+    
+    clip -> "Send Track Volume" -> send_track_out;
+    "Track Volume" -> "Send Volume" [style=dashed];
+    "Send Volume" -> send_out;
+    clip -> return_track_in [style=dashed];
+    "Track Volume" -> dbmeter;
+    return_track_in -> "Track Volume" -> "Pan";
+    "Pan" -> connect_master [arrowhead=none];
+    connect_master -> master_out;
+    "Sidechain Volume" -> connect_master[style=dotted, arrowhead=none];
+    "Track Volume" -> "Sidechain Volume";
+    "Sidechain Volume" -> sidechain_signal_out;
+    "Track Volume" -> connect_track_out [arrowhead=none];
+    connect_track_out -> track_out;
+    "Sidechain Volume" -> connect_track_out[style=dotted, arrowhead=none];
+    return_track_in -> sidechain_key_out[style=dashed];
+ }
